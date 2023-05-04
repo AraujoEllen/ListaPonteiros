@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+
+int vet[] = {4,9,13};
+int i;
+
+for(i=0;i<3;i++){
+   printf("%d ",*(vet+i));
+}
+
+/*
+Imprime o conteúdo armazenado no endereço do vetor. Utilizando um laço de 
+repetição é possível percorrer o bloco de memória de 'vet' e acessar as
+posições do vetor a cada 4 bytes, já que 'vet' é do tipo inteiro. 
+*/
+
+for(i=0;i<3;i++){
+   printf("%X ",vet+i);
+}
+
+/*
+Imprime o endereço do vetor. Utilizando um laço de repetição percorremos o 
+bloco de memória de 'vet', acessamos suas posições e a cada 4 bytes imprimimos 
+o endereço referente ao seu elemento. É possivel perceber a variação desses 4 
+bytes: CFF81190 CFF81194 CFF81198. 
+*/
+
+return 0;
+}

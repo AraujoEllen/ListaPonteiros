@@ -1,0 +1,6 @@
+Resposta:
+
+*(pulo + 2); //Referencia o valor do terceiro elemento do vetor
+*(pulo + 4);
+pulo + 4;
+pulo + 2;

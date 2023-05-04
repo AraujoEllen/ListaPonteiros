@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+
+int mat[4], *p, x;
+
+p = mat + 1; //Válida
+p = mat++; //Inválida (não pode incrementar valor do tipo int ao ponteiro)
+p = ++mat; //Inválida (não pode incrementar valor do tipo int ao ponteiro)
+x = (mat)++; //Válida
+
+return 0;
+}
