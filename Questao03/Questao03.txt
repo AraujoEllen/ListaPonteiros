@@ -1,0 +1,10 @@
+Respostas:
+
+p = i;                  // ilegal, 'p' deveria receber um endereço
+q = &j;			// ok
+p = &*&i;		// ok
+i = (*&)j;		// ilegal, '(*&)' não faz sentido
+i = *&j;		// ok
+i = *&*&j;		// ok
+q = *p;			// ilegal, compila mas não imprime as variáveis 
+i = (*p)++ + *q;	// ok
