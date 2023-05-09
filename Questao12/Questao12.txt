@@ -1,0 +1,23 @@
+//De forma similiar às variáveis, as Funções podem ser acessadas usando 
+//ponteiros. Isso porque elas possuem endereço fixo na memória. 
+//Ex.:
+
+#include <stdio.h>
+
+//Criando uma função 'soma'
+int soma(int x, int y){
+  return x+y;
+}
+
+int main() {
+  
+  int x=2, y=3;
+  //Declarando '*pSoma' que aponta para a função 'soma'
+  int (*pSoma)(int, int);
+  
+  //O ponteiro recebe o endereço da função 
+  pSoma = soma;
+  printf("Soma = %d", pSoma(x,y));
+
+  return 0;
+}
