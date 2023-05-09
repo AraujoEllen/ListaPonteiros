@@ -49,10 +49,10 @@ int main(void) {
   printf("\nNumeros informados:\n");
   mostrar(lista,n);
 
-  // Chamada da função 'qsort()', responsável por comparar
-  // os elementos da lista e ordená-los crentemente. Protótipo:
+  // Chamada da função 'qsort()', responsável por comparar os
+  // elementos da lista e ordená-los crescentemente. Protótipo:
   // qsort(void *base, size_t nitems, size_t size, int (*compar)(const void *, const void*));
-  // ref -> https://www.galirows.com.br/meublog/programacao/utilizacao-funcao-qsort/
+  // referêcia -> https://www.galirows.com.br/meublog/programacao/utilizacao-funcao-qsort/
   qsort(lista, n, sizeof(int), comparaCrescente);
 
   // Mostrando os elementos da lista em ordem crescente 
