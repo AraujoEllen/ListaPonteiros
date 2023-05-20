@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void multMatricial(int *A, int *B, int *C, int numLinhasA, int numColunasA, int numColunasB) {
+  for (int i=0; i<numLinhasA; i++) {
+    for (int j=0; j<numColunasB; j++) {
+      int soma = 0;
+      for (int k=0; k<numColunasA; k++) {
+        soma += A[i*numColunasA+k] * B[k*numColunasB+j];
+      }
+      C[i*numColunasB+j] = soma;
+    }
+  }
+}
+
+void imprimirMatriz(int *matriz, int numLinhas, int numColunas) {
+    for (int i=0; i<numLinhas; i++) {
+        for (int j=0; j<numColunas; j++) {
+            printf("%d ", matriz[i*numColunas+j]);
+        }
+        printf("\n");
+    }
+}
+
+int ** alocaMemoria(int linhas, int colunas){
+  int **mat;
+
+  mat = malloc(linhas * sizeof(int **));
+  for (int i=0; i<linhas; i++){
+    mat[i] = malloc(colunas * sizeof(int*));
+  }
+  return mat;
+}
+
+void liberaMemoria(int **mat, int linhas){
+    for (int i=0; i<linhas; i++)
+    {
+        free(mat[i]);
+    }
+
+    free(mat);
+    mat = NULL;
+}
+
+int main() {
+  
+  int i;
+  int A[] = {1, 2, 3, 4, 5, 6};  // Matriz A (2x3)
+  int B[] = {7, 8, 9, 10, 11, 12};  // Matriz B (3x2)
+  int numLinhasA = 2;
+  int numColunasA = 3;
+  int numColunasB = 2;
+  int C[numLinhasA*numColunasB];  // Matriz C (2x2)
+  int **matA, **matB, **matC;
+
+//Alocando memória
+  //matriz a
+  matA = alocaMemoria(numLinhasA, numColunasA);
+
+  //matriz b
+  matB= alocaMemoria(numColunasA, numColunasB);
+
+  //matriz c
+  matC= alocaMemoria(numLinhasA, numColunasB);
+
+  multMatricial(A, B, C, numLinhasA, numColunasA, numColunasB);
+
+  printf("Matriz A:\n");
+  imprimirMatriz(A, numLinhasA, numColunasA);
+
+  printf("\nMatriz B:\n");
+  imprimirMatriz(B, numColunasA, numColunasB);
+
+  printf("\nMatriz C:\n");
+  imprimirMatriz(C, numLinhasA, numColunasB);
+
+  liberaMemoria(matA, numLinhasA);
+  liberaMemoria(matB, numColunasA);
+  liberaMemoria(matC, numLinhasA);
+  
+  return 0;
+}
