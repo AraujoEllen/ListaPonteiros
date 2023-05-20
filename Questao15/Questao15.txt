@@ -73,7 +73,6 @@ int main(void) {
   // Liberando a memória alocada 
   free(lista);
   lista = NULL;
-  free(lista);
 
   return 0;
 }
