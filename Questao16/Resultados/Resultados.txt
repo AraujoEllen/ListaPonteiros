@@ -1,0 +1,3 @@
+De acordo com os resultados dos prints anexados, podemos analisar
+que o tempo de processamento na questão 15 é menor, quando comparado 
+à questão 14. Tendo, dessa forma, uma execução mais rápida. 

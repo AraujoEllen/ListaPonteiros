@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Função que ordena os elementos da lista
+int comparaCrescente(const void *x,const void *y){
+  if(*(int*)x == *(int*)y){
+    return 0; //iguais
+  }  
+  else if(*(float*)x < *(float*)y){
+    return -1; //X vem antes de Y
+  }
+  else
+    return 1; //X vem depois de Y
+}
+
+// Função que mostra os elementos da lista
+void mostrar(float *lista, int quant){
+  for(int i = 0; i < quant; i++){
+    printf("%.2f \n",lista[i]);
+  }
+}
+
+int main(void) {
+
+  
+  clock_t t[2];
+  int i, n;
+  float *lista;
+
+  t[0] = clock();
+  
+  printf("Informe a quantidade de numeros que deseja ordenar:\n");
+  scanf("%d", &n);
+  printf("\n");
+
+  // Alocando um bloco de memoria 
+  lista = (float *)malloc(n * sizeof(float));
+  if (lista == NULL) {
+    printf("Erro: memoria insuficiente\n");
+    exit(1);
+  }
+
+  // Solicitando ao usuário a quantidade de elementos da lista 
+  for (i = 0; i < n; i++){
+      printf("Digite o valor da posicao %d: \n", i+1);
+      scanf("%f", &lista[i]);
+  }
+  
+  // Mostrando os elementos obtidos anteriormente  
+  printf("\nNumeros informados:\n");
+  mostrar(lista,n);
+
+  // Chamada da função 'qsort()', responsável por comparar
+  // os elementos da lista e ordená-los crentemente. Protótipo:
+  // void qsort(void *base, size_t nitems, size_t size, int (*compar)(const void *, const void*));
+  // ref -> https://www.galirows.com.br/meublog/programacao/utilizacao-funcao-qsort/
+  qsort(lista, n, sizeof(int), comparaCrescente);
+
+  // Mostrando os elementos da lista em ordem crescente 
+  printf("\nNumeros informados em ordem crescente:\n");
+  mostrar(lista,n);
+  
+  // Liberando a memória alocada 
+  free(lista);
+  lista = NULL;
+  free(lista);
+
+  t[1] = clock();
+  
+	double time = (t[1] - t[0]) * 1000.0 / CLOCKS_PER_SEC;
+	printf("\n\nTempo gasto: %g ms.", time);
+	printf("\nEm segundos: %.2g s.", time/1000);
+
+  return 0;
+}
