@@ -55,7 +55,6 @@ int main(void) {
   // Liberando a memoria alocada
   free(lista);
   lista = NULL;
-  free(lista);
 
   return 0;
 }
