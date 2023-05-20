@@ -53,7 +53,7 @@ int main(void) {
   vetor_a = NULL;
   
   free(vetor_b);
-  vetor_b= NULL;
+  vetor_b = NULL;
   
   free(vetor_soma);
   vetor_soma = NULL;
