@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void somaVetores(int *vetor_a, int *vetor_b, int *soma, int tam){
+  for(int i=0; i<tam; i++){
+    soma[i] = vetor_a[i] + vetor_b[i];
+  }  
+}
+
+void mostraVetor(int *vetor, int tam){
+  for (int i=0; i<tam; i++){
+    printf("%d ", vetor[i]);
+  }
+}
+
+void escreverVetor(int *vetor, int tam){
+  for (int i = 0; i < tam; i++){
+      printf("Digite o valor da posicao %d: \n", i+1);
+      scanf("%d", &vetor[i]);
+  }
+}
+
+int main(void) {
+  
+  int *vetor_a, *vetor_b, *vetor_soma;
+  int tam;
+
+  printf("Informe o tamanho dos vetores: ");
+  scanf("%d", &tam);
+  
+  vetor_a = (int *)malloc(tam * sizeof(int));
+  vetor_b = (int *)malloc(tam * sizeof(int));
+  vetor_soma = (int *)malloc(tam * sizeof(int));
+
+  printf("\n       _Vetor A_       \n");
+  escreverVetor(vetor_a, tam);
+
+  printf("\n       _Vetor B_       \n");
+  escreverVetor(vetor_b, tam);
+
+  somaVetores(vetor_a,vetor_b,vetor_soma,tam);
+
+  printf("\nVetor A: ");
+  mostraVetor(vetor_a, tam);
+    
+  printf("\nVetor B: ");
+  mostraVetor(vetor_b, tam);
+
+  printf("\nVetor(A+B): ");
+  mostraVetor(vetor_soma, tam);
+
+  free(vetor_a);
+  vetor_a = NULL;
+  
+  free(vetor_b);
+  vetor_b= NULL;
+  
+  free(vetor_soma);
+  vetor_soma = NULL;
+
+  return 0;
+}
